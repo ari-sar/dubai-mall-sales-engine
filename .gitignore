@@ -7,3 +7,4 @@ out/
 public/videos/
 public/images/
 !public/images/.gitkeep
+scripts/
