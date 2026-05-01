@@ -1,0 +1,11 @@
+node_modules/
+dist/
+build/
+*.log
+.env
+*.zip
+*.mp4
+*.apk
+*.aab
+.next
+.claude
