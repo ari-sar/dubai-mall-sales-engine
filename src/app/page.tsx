@@ -29,8 +29,10 @@ export default function HomePage() {
       <section id="hero" className="relative h-screen" aria-label="Hero">
         <VideoBackground
           src={VIDEOS.hero.src}
+          srcWebm={VIDEOS.hero.webm}
           poster={VIDEOS.hero.poster}
           priority={true}
+          preload="metadata"
           overlayOpacity={0.6}
           className="h-full"
         >

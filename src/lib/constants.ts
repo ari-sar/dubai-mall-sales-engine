@@ -17,6 +17,7 @@ export const SITE_CONFIG = {
 export const VIDEOS = {
   hero: {
     src: "/videos/hero-aerial-night.mp4",
+    webm: "/videos/hero-aerial-night.webm",
     preview: "/videos/hero-aerial-night-preview.mp4",
     poster: "/images/posters/hero-aerial-night-poster.webp",
     posterFallback: "/images/posters/hero-aerial-night-poster.jpg",

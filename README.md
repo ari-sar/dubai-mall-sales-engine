@@ -54,21 +54,14 @@ Navigation methods: scroll, MiniNav dots, Cmd+K command bar, path cards.
 
 ## AI Tools Used
 
-### Midjourney v6
-- Retail / sponsorship path-card imagery, future-expansion concept render.
-- Prompt: *"Luxury Dubai Mall interior, flagship store, golden hour, architectural photography, cinematic, 8k"*.
+### ChatGPT
+For overall planing and image generation
 
-### ChatGPT / Claude
-- Luxury tone copy refinement.
-- Metric contextualization ("More than the population of France").
-- Foot-traffic data simulation for the heat map.
+### Kimi & Gemini
+For Finalizing the plan and bulletproof it
 
-### DALL-E 3
-- Venue interior renders where official assets were unavailable.
-
-### Code Generation
-- GSAP animation patterns optimized for performance.
-- D3.js data-binding structure for the heat map.
+### Claude Code
+For Coding
 
 ## Notes
 - `next.config.js` uses `output: "export"` for static hosting (Vercel / S3 / any CDN).

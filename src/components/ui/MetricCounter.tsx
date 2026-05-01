@@ -1,11 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
-
-gsap.registerPlugin(ScrollTrigger);
 
 interface MetricCounterProps {
   value: number;
@@ -46,14 +42,19 @@ export function MetricCounter({
     const numberEl = numberRef.current;
     if (!container || !numberEl) return;
 
-    const obj = { val: 0 };
+    let cancelled = false;
+    let cleanup: (() => void) | undefined;
 
-    const trigger = ScrollTrigger.create({
-      trigger: container,
-      start: "top 80%",
-      once: true,
-      onEnter: () => {
-        gsap.to(obj, {
+    const observer = new IntersectionObserver(
+      async ([entry]) => {
+        if (!entry.isIntersecting || cancelled) return;
+        observer.disconnect();
+
+        const { default: gsap } = await import("gsap");
+        if (cancelled) return;
+
+        const obj = { val: 0 };
+        const tween = gsap.to(obj, {
           val: value,
           duration,
           ease: "power2.out",
@@ -64,11 +65,17 @@ export function MetricCounter({
             setAnnounced(true);
           },
         });
+
+        cleanup = () => tween.kill();
       },
-    });
+      { threshold: 0, rootMargin: "0px 0px -20% 0px" }
+    );
+    observer.observe(container);
 
     return () => {
-      trigger.kill();
+      cancelled = true;
+      observer.disconnect();
+      cleanup?.();
     };
   }, [value, duration]);
 

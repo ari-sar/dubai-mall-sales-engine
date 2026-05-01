@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p src/app src/components/ui src/components/layout src/components/sections/retail src/components/sections/events src/components/sections/sponsorship src/hooks src/lib src/types scripts docs public/videos public/images)",
+      "Bash(cp /tmp/dubai-zip/layout.tsx /tmp/dubai-zip/page.tsx /tmp/dubai-zip/template.tsx /tmp/dubai-zip/globals.css src/app/)",
+      "Bash(cp /tmp/dubai-zip/VideoBackground.tsx /tmp/dubai-zip/KineticText.tsx /tmp/dubai-zip/MetricCounter.tsx /tmp/dubai-zip/CTAButton.tsx /tmp/dubai-zip/PathCard.tsx src/components/ui/)",
+      "Bash(cp /tmp/dubai-zip/MiniNav.tsx src/components/layout/)",
+      "Bash(cp /tmp/dubai-zip/HeatMap.tsx /tmp/dubai-zip/BrandAdjacency.tsx src/components/sections/retail/)",
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "Bash(npx next *)",
+      "Bash(ffprobe -v quiet -print_format json -show_streams \"e:/new-workspace/dubai-mall-sales-engine/public/videos/raw/fashion.mp4\")",
+      "Bash(ffmpeg -y -i e:/new-workspace/dubai-mall-sales-engine/public/videos/raw/fashion.mp4 -t 15 -an -vf scale=1280:-2 -c:v libx264 -crf 24 -preset slow -movflags +faststart e:/new-workspace/dubai-mall-sales-engine/public/videos/fashion-week.mp4)",
+      "Bash(ffmpeg -i public/images/path-retail.png -q:v 80 public/images/path-retail.webp -y)",
+      "Bash(ffmpeg -i public/images/path-events.png -q:v 80 public/images/path-events.webp -y)",
+      "Bash(ffmpeg -i public/images/path-sponsorship.png -q:v 80 public/images/path-sponsorship.webp -y)",
+      "Bash(npm run *)"
+    ]
+  }
+}

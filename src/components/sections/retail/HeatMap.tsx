@@ -1,7 +1,11 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import * as d3 from "d3";
+import { select } from "d3-selection";
+import { scaleSequential, scaleLinear } from "d3-scale";
+import { interpolateYlOrRd } from "d3-scale-chromatic";
+import { easeCubicOut, easeCubicInOut } from "d3-ease";
+import "d3-transition";
 import { cn } from "@/lib/utils";
 import type { HeatZone } from "@/types";
 
@@ -19,17 +23,17 @@ export function HeatMap({ zones, className, onZoneSelect }: HeatMapProps) {
   const [hoveredZone, setHoveredZone] = useState<string | null>(null);
 
   // D3 color scale
-  const colorScale = d3.scaleSequential()
+  const colorScale = scaleSequential()
     .domain([0, 1])
-    .interpolator(d3.interpolateYlOrRd);
+    .interpolator(interpolateYlOrRd);
 
   // D3 radius scale (density → circle size)
-  const radiusScale = d3.scaleLinear()
+  const radiusScale = scaleLinear()
     .domain([0, 1])
     .range([2, 8]); // % of SVG width
 
   useEffect(() => {
-    const svg = d3.select(svgRef.current);
+    const svg = select(svgRef.current);
     if (!svg.node()) return;
 
     // Bind data to circles
@@ -51,14 +55,14 @@ export function HeatMap({ zones, className, onZoneSelect }: HeatMapProps) {
           .attr("tabindex", "0")
           .attr("aria-label", (d) => `${d.name}: ${Math.round(d.density[period] * 100)}% traffic density, ${d.avgDwell} min avg dwell`)
           .on("mouseenter", function(event, d) {
-            d3.select(this)
+            select(this)
               .transition().duration(200)
               .attr("r", radiusScale(d.density[period]) * 1.5 + "%")
               .attr("opacity", 0.9);
             setHoveredZone(d.id);
           })
           .on("mouseleave", function(event, d) {
-            d3.select(this)
+            select(this)
               .transition().duration(200)
               .attr("r", radiusScale(d.density[period]) + "%")
               .attr("opacity", 0.6);
@@ -74,13 +78,13 @@ export function HeatMap({ zones, className, onZoneSelect }: HeatMapProps) {
             }
           });
 
-        appended.transition().duration(800).ease(d3.easeCubicOut)
+        appended.transition().duration(800).ease(easeCubicOut)
           .attr("r", (d) => radiusScale(d.density[period]) + "%");
 
         return appended;
       },
       (update) => {
-        update.transition().duration(600).ease(d3.easeCubicInOut)
+        update.transition().duration(600).ease(easeCubicInOut)
           .attr("fill", (d) => colorScale(d.density[period]))
           .attr("r", (d) => radiusScale(d.density[period]) + "%")
           .attr("aria-label", (d) => `${d.name}: ${Math.round(d.density[period] * 100)}% traffic density, ${d.avgDwell} min avg dwell`);

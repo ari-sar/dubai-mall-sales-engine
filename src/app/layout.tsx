@@ -3,7 +3,6 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { CommandBar } from "@/components/layout/CommandBar";
 import { MiniNav } from "@/components/layout/MiniNav";
-import { GlitterCanvas } from "@/components/ui/GlitterCanvas";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,8 +34,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/images/posters/hero-aerial-night-poster.webp"
+          fetchPriority="high"
+        />
+      </head>
       <body className="bg-[#0a0a0a] text-white antialiased">
-        <GlitterCanvas />
         {children}
         <CommandBar />
         <MiniNav />

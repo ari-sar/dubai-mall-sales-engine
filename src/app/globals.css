@@ -43,6 +43,16 @@
     background: rgba(201, 169, 110, 0.3);
     color: #fff;
   }
+
+  /* HeatMap zone focus ring — replace browser default rectangle with circular gold outline */
+  circle.heat-zone:focus {
+    outline: none;
+  }
+  circle.heat-zone:focus-visible {
+    outline: none;
+    stroke: #c9a96e;
+    stroke-width: 0.5;
+  }
 }
 
 @layer utilities {

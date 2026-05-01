@@ -11,7 +11,11 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
-    "d3": "^7.9.0",
+    "d3-ease": "^3.0.1",
+    "d3-scale": "^4.0.2",
+    "d3-scale-chromatic": "^3.1.0",
+    "d3-selection": "^3.0.0",
+    "d3-transition": "^3.0.1",
     "gsap": "^3.12.5",
     "lucide-react": "^0.439.0",
     "next": "14.2.15",
@@ -20,7 +24,11 @@
     "tailwind-merge": "^2.5.2"
   },
   "devDependencies": {
-    "@types/d3": "^7.4.3",
+    "@types/d3-ease": "^3.0.2",
+    "@types/d3-scale": "^4.0.8",
+    "@types/d3-scale-chromatic": "^3.0.3",
+    "@types/d3-selection": "^3.0.10",
+    "@types/d3-transition": "^3.0.8",
     "@types/node": "^20.16.10",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.0",
@@ -30,5 +38,13 @@
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.13",
     "typescript": "^5.6.2"
-  }
+  },
+  "browserslist": [
+    "Chrome >= 100",
+    "Firefox >= 100",
+    "Edge >= 100",
+    "Safari >= 15",
+    "not dead",
+    "not op_mini all"
+  ]
 }

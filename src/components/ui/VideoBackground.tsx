@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 
 interface VideoBackgroundProps {
   src: string;
+  srcWebm?: string;
   poster: string;
   preview?: string;
   className?: string;
@@ -21,6 +22,7 @@ interface VideoBackgroundProps {
 
 export function VideoBackground({
   src,
+  srcWebm,
   poster,
   preview,
   className,
@@ -109,6 +111,7 @@ export function VideoBackground({
           preload={preload}
           aria-hidden="true"
         >
+          {srcWebm && <source src={srcWebm} type="video/webm" />}
           <source src={src} type="video/mp4" />
         </video>
       )}
