@@ -7,5 +7,6 @@ build/
 *.mp4
 *.apk
 *.aab
-.next
 .claude
+.next/
+out/
